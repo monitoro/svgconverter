@@ -30,8 +30,10 @@ function App() {
     formData.append('smoothing', String(params.smoothing))
     formData.append('invert', String(params.invert))
 
+    const apiUrl = import.meta.env.VITE_API_URL || '/api/convert'
+
     try {
-      const response = await fetch('/api/convert', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
       })

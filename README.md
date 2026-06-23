@@ -119,3 +119,24 @@ Response: `image/svg+xml`
 2. Apply the threshold to create a binary image.
 3. Run Potrace to extract filled vector paths as SVG.
 4. Return the SVG for preview and download.
+
+## Deployment
+
+This project uses a separate frontend/backend hosting strategy.
+
+### Backend (Render, Railway, Fly.io, etc.)
+
+1. Deploy the `backend/` directory.
+2. Make sure `potrace` is installed on the server.
+3. Note the public URL, e.g. `https://svgconverter-api.onrender.com`.
+
+### Frontend (Vercel)
+
+1. Copy `frontend/.env.example` to `frontend/.env.production`.
+2. Set `VITE_API_URL` to your backend URL:
+   ```
+   VITE_API_URL=https://svgconverter-api.onrender.com/api/convert
+   ```
+3. In Vercel, set the **Root Directory** to `frontend`.
+4. Add the same `VITE_API_URL` in Vercel Project Settings → Environment Variables.
+5. Deploy.
